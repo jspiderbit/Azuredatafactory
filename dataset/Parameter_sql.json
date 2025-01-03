@@ -1,0 +1,44 @@
+{
+	"name": "Parameter_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ParameterizedAzureSQL",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"database": {
+					"value": "@dataset().database",
+					"type": "Expression"
+				},
+				"servername": {
+					"value": "@dataset().servername",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string",
+				"defaultValue": "Users"
+			},
+			"servername": {
+				"type": "string",
+				"defaultValue": "kiran123.database.windows.net"
+			},
+			"database": {
+				"type": "string",
+				"defaultValue": "TargetDB"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

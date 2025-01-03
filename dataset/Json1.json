@@ -1,0 +1,61 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage6",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "config.json",
+				"folderPath": "config",
+				"fileSystem": "adls-container"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"source": {
+					"type": "object",
+					"properties": {
+						"adlsPath": {
+							"type": "string"
+						},
+						"fileName": {
+							"type": "string"
+						}
+					}
+				},
+				"destination": {
+					"type": "object",
+					"properties": {
+						"serverName": {
+							"type": "string"
+						},
+						"databaseName": {
+							"type": "string"
+						},
+						"tableName": {
+							"type": "string"
+						}
+					}
+				},
+				"pipeline": {
+					"type": "object",
+					"properties": {
+						"batchSize": {
+							"type": "integer"
+						},
+						"copyBehavior": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
