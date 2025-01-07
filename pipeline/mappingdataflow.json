@@ -1,0 +1,61 @@
+{
+	"name": "mappingdataflow",
+	"properties": {
+		"activities": [
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "TasK1",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"CSVfromBlob": {
+								"directory": "CSV",
+								"filename": "coustomerscsv.csv"
+							},
+							"sqltable": {
+								"TableName": "CustomerPurchases",
+								"Schema": "dbo"
+							},
+							"Location": {
+								"TableName": "LocationDetails ",
+								"Schema": "dbo"
+							},
+							"sink1": {
+								"directory": "CSV",
+								"filename": {
+									"value": "@concat('adls-container/personal_details_', formatDateTime(utcNow(), 'yyyyMMdd'), '.csv') ",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine",
+					"continuationSettings": {
+						"customizedCheckpointKey": "d9bf8c9e-ae92-4840-9864-0a9067622d3a"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Task-12,13"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-12-25T11:04:57Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
