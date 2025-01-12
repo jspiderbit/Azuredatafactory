@@ -1,0 +1,9 @@
+{
+	"name": "Azure345",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "71964c0c-9c2a-4d28-92f2-7d3d73e2afd8",
+		"tenantId": "818467cf-44b9-45a5-a41a-1ef924fcd795"
+	}
+}
